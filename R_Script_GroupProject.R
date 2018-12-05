@@ -306,7 +306,7 @@ RMmodel<- function(t,y,p){
 #Define parameters, initial values for state variables, and time steps 
 params1=c(0.8,0.07,0.2,5,400,0.001)
 NO=c(500,120)
-times= 1:100
+times= 1:200
 
 # Simulate the model using ode()
 modelSim1=ode(y=NO,times=times,func=RMmodel,parms=params1)
@@ -487,7 +487,46 @@ modelOutputParadox4=melt(modelOutputParadox4,id.vars="time")
 ggplot(modelOutputParadox4,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()
 
 
+###Simulation 13- decrease b 
+## This simulation is at the bottom because it was not run earlier
 
+#Define parameters, intitial values for state variables, and time steps 
+params13=c(0.3,0.07,0.2,5,400,0.001)
+NO=c(500,120)
+times= 1:200
+
+# Simulate the model using ode()
+modelSim13=ode(y=NO,times=times,func=RMmodel,parms=params13)
+#model state variables in subsequent columns convert to a dataframe for plotting purposes
+modelOutput13=data.frame(time=modelSim13[,1],N1=modelSim13[,2],N2=modelSim13[,3])
+#plot output of simulation
+ggplot(modelOutput13,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput13, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+
+###Paradox of Enrichment 
+
+##alpha at 0.00125 
+#Define parameters, intitial values for state variables, and time steps 
+params14=c(0.8,0.07,0.2,5,400,0.00125)
+NO=c(500,120)
+times= 1:200
+# Simulate the model using ode()
+modelSim14=ode(y=NO,times=times,func=RMmodel,parms=params14)
+#model state variables in subsequent columns convert to a dataframe for plotting purposes
+modelOutput14=data.frame(time=modelSim14[,1],N1=modelSim14[,2],N2=modelSim14[,3])
+#plot output of simulation
+ggplot(modelOutput14,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput14, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+
+##alpha at 0.0005
+#Define parameters, intitial values for state variables, and time steps 
+params15=c(0.8,0.07,0.2,5,400,0.0005)
+NO=c(500,120)
+times= 1:200
+# Simulate the model using ode()
+modelSim15=ode(y=NO,times=times,func=RMmodel,parms=params15)
+#model state variables in subsequent columns convert to a dataframe for plotting purposes
+modelOutput15=data.frame(time=modelSim15[,1],N1=modelSim15[,2],N2=modelSim15[,3])
+#plot output of simulation
+ggplot(modelOutput15,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput15, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
 
 
 
