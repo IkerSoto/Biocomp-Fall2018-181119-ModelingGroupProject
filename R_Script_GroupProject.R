@@ -456,6 +456,23 @@ modelOutput12=data.frame(time=modelSim12[,1],N1=modelSim12[,2],N2=modelSim12[,3]
 ggplot(modelOutput12,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput12, mapping=aes(x=time,y=N2),col='red')+theme_classic()
 
 
+###Simulation 13- decrease b 
+## This simulation is at the bottom because it was not run earlier
+
+#Define parameters, intitial values for state variables, and time steps 
+params13=c(0.3,0.07,0.2,5,400,0.001)
+NO=c(500,120)
+times= 1:200
+
+# Simulate the model using ode()
+modelSim13=ode(y=NO,times=times,func=RMmodel,parms=params13)
+#model state variables in subsequent columns convert to a dataframe for plotting purposes
+modelOutput13=data.frame(time=modelSim13[,1],N1=modelSim13[,2],N2=modelSim13[,3])
+#plot output of simulation
+ggplot(modelOutput13,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput13, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+
+
+
 
 
 
