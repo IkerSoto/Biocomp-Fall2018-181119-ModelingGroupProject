@@ -37,7 +37,8 @@ modelSimOutputIS=data.frame(time=modelSimIS[,1],Herbivore=modelSimIS[,2],Predato
 modelSimOutputIS=melt(modelSimOutputIS,id.vars="time")
 #Graphing the results
 library(ggplot2)
-ggplot(modelSimOutputIS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutputIS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation of Initial Conditions")
 
 ###Additional simulations where initial parameters are changed.###
 
@@ -50,7 +51,8 @@ times1IS
 modelSim2IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params2IS)
 modelSimOutput2IS=data.frame(time=modelSim2IS[,1],Herbivore=modelSim2IS[,2],Predator=modelSim2IS[,3])
 modelSimOutput2IS=melt(modelSimOutput2IS,id.vars="time")
-ggplot(modelSimOutput2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when b is increased by a factor of 3")
 
 #Simulation when "b" is increased by a factor of 2: b=1, a=0.02, e=0.1, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -59,7 +61,8 @@ times1IS
 modelSim2.1IS=ode(y=y1IS,times=times1,func=ddLotkaVolt,parms=params2.1IS)
 modelSimOutput2.1IS=data.frame(time=modelSim2.1IS[,1],Herbivore=modelSim2.1IS[,2],Predator=modelSim2.1IS[,3])
 modelSimOutput2.1IS=melt(modelSimOutput2.1IS,id.vars="time")
-ggplot(modelSimOutput2.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput2.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when b is increased by a factor of 2")
 
 #Simulation when "b" is increased by a factor of 4: b=2, a=0.02, e=0.1, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -68,7 +71,8 @@ times1IS
 modelSim2.2IS=ode(y=y1IS,times=times1,func=ddLotkaVolt,parms=params2.2IS)
 modelSimOutput2.2IS=data.frame(time=modelSim2.2IS[,1],Herbivore=modelSim2.2IS[,2],Predator=modelSim2.2IS[,3])
 modelSimOutput2.2IS=melt(modelSimOutput2.2IS,id.vars="time")
-ggplot(modelSimOutput2.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput2.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when b is increased by a factor of 4")
 
 
 ####Simulating a decrease in prey birth rate (b)####
@@ -79,7 +83,8 @@ times1IS
 modelSim3IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params3IS)
 modelSimOutput3IS=data.frame(time=modelSim3IS[,1],Herbivore=modelSim3IS[,2],Predator=modelSim3IS[,3])
 modelSimOutput3IS=melt(modelSimOutput3IS,id.vars="time")
-ggplot(modelSimOutput3IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput3IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when b is decreased by a factor of 3")
 
 #Simulation when "b" is decreased by a factor of 2: b=0.25,a=0.02, e=0.1, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -88,7 +93,8 @@ times1IS
 modelSim3.1IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params3.1IS)
 modelSimOutput3.1IS=data.frame(time=modelSim3.1IS[,1],Herbivore=modelSim3.1IS[,2],Predator=modelSim3.1IS[,3])
 modelSimOutput3.1IS=melt(modelSimOutput3.1IS,id.vars="time")
-ggplot(modelSimOutput3.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput3.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when b is decreased by a factor of 2")
 
 #Simulation when "b" is decreased by a factor of 4: b=0.125,a=0.02, e=0.1, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -97,7 +103,8 @@ times1IS
 modelSim3.2IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params3.2IS)
 modelSimOutput3.2IS=data.frame(time=modelSim3.2IS[,1],Herbivore=modelSim3.2IS[,2],Predator=modelSim3.2IS[,3])
 modelSimOutput3.2IS=melt(modelSimOutput3.2IS,id.vars="time")
-ggplot(modelSimOutput3.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput3.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when b is decreased by a factor of 4")
 
 
 ##Simulation of cases where predator attack rate (a) is either lower or higher than the initial condition.##
@@ -109,7 +116,8 @@ times1IS
 modelSim4IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params4IS)
 modelSimOutput4IS=data.frame(time=modelSim4IS[,1],Herbivore=modelSim4IS[,2],Predator=modelSim4IS[,3])
 modelSimOutput4IS=melt(modelSimOutput4IS,id.vars="time")
-ggplot(modelSimOutput4IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput4IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when a is increased by a factor of 3")
 
 #Simulation when "a" is increased by a factor of 2:b=0.5, a=0.04,e=0.1, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -119,6 +127,7 @@ modelSim4.1IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params4.1IS)
 modelSimOutput4.1IS=data.frame(time=modelSim4.1IS[,1],Herbivore=modelSim4.1IS[,2],Predator=modelSim4.1IS[,3])
 modelSimOutput4.1IS=melt(modelSimOutput4.1IS,id.vars="time")
 ggplot(modelSimOutput4.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
++ggtitle(Simulation when a is increased by a factor of 2)
 
 #Simulation when "a" is increased by a factor of 4:b=0.5, a=0.08,e=0.1, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -127,7 +136,8 @@ times1IS
 modelSim4.2IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params4.2IS)
 modelSimOutput4.2IS=data.frame(time=modelSim4.2IS[,1],Herbivore=modelSim4.2IS[,2],Predator=modelSim4.2IS[,3])
 modelSimOutput4.2IS=melt(modelSimOutput4.2IS,id.vars="time")
-ggplot(modelSimOutput4.2,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput4.2,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when a is increased by a factor of 4")
 
 
 ####Simulating a decrease in predator attack rate (a)####
@@ -138,7 +148,8 @@ times1IS
 modelSim5IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params5IS)
 modelSimOutput5IS=data.frame(time=modelSim5IS[,1],Herbivore=modelSim5IS[,2],Predator=modelSim5IS[,3])
 modelSimOutput5IS=melt(modelSimOutput5IS,id.vars="time")
-ggplot(modelSimOutput5IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput5IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when a is decreased by a factor of 3")
 
 #Simulation when "a" is decreased by a factor of 2:b=0.5, a=0.01,e=0.1, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -147,7 +158,8 @@ times1IS
 modelSim5.1IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params5.1IS)
 modelSimOutput5.1IS=data.frame(time=modelSim5.1IS[,1],Herbivore=modelSim5.1IS[,2],Predator=modelSim5.1IS[,3])
 modelSimOutput5.1IS=melt(modelSimOutput5.1IS,id.vars="time")
-ggplot(modelSimOutput5.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput5.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when a is decreased by a factor of 2")
 
 #Simulation when "a" is decreased by a factor of 4:b=0.5, a=0.005,e=0.1, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -156,7 +168,8 @@ times1IS
 modelSim5.2IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params5.2IS)
 modelSimOutput5.2IS=data.frame(time=modelSim5.2IS[,1],Herbivore=modelSim5.2IS[,2],Predator=modelSim5.2IS[,3])
 modelSimOutput5.2IS=melt(modelSimOutput5.2IS,id.vars="time")
-ggplot(modelSimOutput5.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput5.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when a is decreased by a factor of 4")
 
 ##Simulation of cases where the conversion efficiency of prey to predators (e) is either lower or higher than the initial condition.##
 ##Simulating an increase in conversion efficiency of prey to predators (e)##
@@ -167,7 +180,8 @@ times1IS
 modelSim6IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params6IS)
 modelSimOutput6IS=data.frame(time=modelSim6IS[,1],Herbivore=modelSim6IS[,2],Predator=modelSim6IS[,3])
 modelSimOutput6IS=melt(modelSimOutput6IS,id.vars="time")
-ggplot(modelSimOutput6IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput6IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when e is increased by a factor of 3")
 
 #Simulation when "e" is increased by a factor of 2:b=0.5, a=0.02,e=0.2, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -177,6 +191,7 @@ modelSim6.1IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params6.1IS)
 modelSimOutput6.1IS=data.frame(time=modelSim6.1IS[,1],Herbivore=modelSim6.1IS[,2],Predator=modelSim6.1IS[,3])
 modelSimOutput6.1IS=melt(modelSimOutput6.1IS,id.vars="time")
 ggplot(modelSimOutput6.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
++ggtitle("Simulation when e is increased by a factor of 2")
 
 #Simulation when "e" is increased by a factor of 4:b=0.5, a=0.02,e=0.4, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -186,6 +201,7 @@ modelSim6.2IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params6.2IS)
 modelSimOutput6.2IS=data.frame(time=modelSim6.2IS[,1],Herbivore=modelSim6.2IS[,2],Predator=modelSim6.2IS[,3])
 modelSimOutput6.2IS=melt(modelSimOutput6.2IS,id.vars="time")
 ggplot(modelSimOutput6.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
++ggtitle("Simulation when e is increased by a factor of 4")
 
 
 ####Simulating a decrease in conversion efficiency of prey to predators (e)####
@@ -196,7 +212,8 @@ times1IS
 modelSim7IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params7IS)
 modelSimOutput7IS=data.frame(time=modelSim7IS[,1],Herbivore=modelSim7IS[,2],Predator=modelSim7IS[,3])
 modelSimOutput7IS=melt(modelSimOutput7IS,id.vars="time")
-ggplot(modelSimOutput7IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput7IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when e is decreased by a factor of 3")
 
 #Simulation when "e" is decreased by a factor of 2:b=0.5,a=0.02,e=0.05, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -205,7 +222,8 @@ times1IS
 modelSim7.1IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params7.1)
 modelSimOutput7.1IS=data.frame(time=modelSim7.1IS[,1],Herbivore=modelSim7.1IS[,2],Predator=modelSim7.1IS[,3])
 modelSimOutput7.1IS=melt(modelSimOutput7.1IS,id.vars="time")
-ggplot(modelSimOutput7.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput7.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when e is decreased by a factor of 2")
 
 #Simulation when "e" is decreased by a factor of 4:b=0.5,a=0.02,e=0.025, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -214,7 +232,8 @@ times1IS
 modelSim7.2IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params7.2IS)
 modelSimOutput7.2IS=data.frame(time=modelSim7.2IS[,1],Herbivore=modelSim7.2IS[,2],Predator=modelSim7.2IS[,3])
 modelSimOutput7.2IS=melt(modelSimOutput7.2IS,id.vars="time")
-ggplot(modelSimOutput7.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput7.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when e is decreased by a factor of 4")
 
 ##Simulation of cases where predator death rate (s) is either lower or higher than the initial condition.##
 ##Simulating an increase in predator death rate##
@@ -225,25 +244,28 @@ times1IS
 modelSim8IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params8IS)
 modelSimOutput8IS=data.frame(time=modelSim8IS[,1],Herbivore=modelSim8IS[,2],Predator=modelSim8IS[,3])
 modelSimOutput8IS=melt(modelSimOutput8IS,id.vars="time")
-ggplot(modelSimOutput8IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput8IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when s is increased by a factor of 3")
 
-#Simulation when s is increased by a factor of 2:b=0.5,a=0.02,e=0.1, s=0.4, H0=25, P0=5 and a time step of 0.1
+#Simulation when "s" is increased by a factor of 2:b=0.5,a=0.02,e=0.1, s=0.4, H0=25, P0=5 and a time step of 0.1
 y1IS
 params8.1IS=c(0.5,0.02,0.1,0.4)
 times1IS
 modelSim8.1IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params8.1IS)
 modelSimOutput8.1IS=data.frame(time=modelSim8.1IS[,1],Herbivore=modelSim8.1IS[,2],Predator=modelSim8.1IS[,3])
 modelSimOutput8.1IS=melt(modelSimOutput8.1IS,id.vars="time")
-ggplot(modelSimOutput8.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput8.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when s is increased by a factor of 2")
 
-#Simulation when s is increased by a factor of 4:b=0.5,a=0.02,e=0.1, s=0.8, H0=25, P0=5 and a time step of 0.1
+#Simulation when "s" is increased by a factor of 4:b=0.5,a=0.02,e=0.1, s=0.8, H0=25, P0=5 and a time step of 0.1
 y1IS
 params8.2IS=c(0.5,0.02,0.1,0.8)
 times1IS
 modelSim8.2IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params8.2IS)
 modelSimOutput8.2IS=data.frame(time=modelSim8.2IS[,1],Herbivore=modelSim8.2IS[,2],Predator=modelSim8.2IS[,3])
 modelSimOutput8.2IS=melt(modelSimOutput8.2IS,id.vars="time")
-ggplot(modelSimOutput8.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput8.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when s is increased by a factor of 4")
 
 
 ####Simulating a decrease in predator death rate####
@@ -254,7 +276,8 @@ times1IS
 modelSim9IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params9IS)
 modelSimOutput9IS=data.frame(time=modelSim9IS[,1],Herbivore=modelSim9IS[,2],Predator=modelSim9IS[,3])
 modelSimOutput9IS=melt(modelSimOutput9IS,id.vars="time")
-ggplot(modelSimOutput9IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput9IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when s is decreased by a factor of 3")
 
 #Simulation when "s" is decreased by a factor of 2:b=0.5,a=0.02,e=0.1, s=0.1, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -263,16 +286,18 @@ times1IS
 modelSim9.1IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params9.1IS)
 modelSimOutput9.1IS=data.frame(time=modelSim9.1IS[,1],Herbivore=modelSim9.1IS[,2],Predator=modelSim9.1IS[,3])
 modelSimOutput9.1IS=melt(modelSimOutput9.1IS,id.vars="time")
-ggplot(modelSimOutput9.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput9.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when s is decreased by a factor of 2")
 
-#Simulation when s is decreased by a factor of 4:b=0.5,a=0.02,e=0.1, s=0.05, H0=25, P0=5 and a time step of 0.1
+#Simulation when "s" is decreased by a factor of 4:b=0.5,a=0.02,e=0.1, s=0.05, H0=25, P0=5 and a time step of 0.1
 y1IS
 params9.2IS=c(0.5,0.02,0.1,0.05)
 times1IS
 modelSim9.2IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params9.2IS)
 modelSimOutput9.2IS=data.frame(time=modelSim9.2IS[,1],Herbivore=modelSim9.2IS[,2],Predator=modelSim9.2IS[,3])
 modelSimOutput9.2IS=melt(modelSimOutput9.2IS,id.vars="time")
-ggplot(modelSimOutput9.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+ggplot(modelSimOutput9.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when s is decreased by a factor of 4")
 
 
 
