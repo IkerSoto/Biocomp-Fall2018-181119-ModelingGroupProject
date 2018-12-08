@@ -354,7 +354,7 @@ modelSim2=ode(y=NO,times=times,func=RMmodel,parms=params2)
 modelOutput2=data.frame(time=modelSim2[,1],N1=modelSim2[,2],N2=modelSim2[,3])
 #plot output of simulation
 ggplot(modelOutput2,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput2, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
-  scale_color_discrete(name = "Species", labels = c("Prey", "Predators")) +ggtitle("")
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators")) 
 
 
 ###Simulation 3- increase e 
@@ -550,3 +550,4 @@ modelOutputParadox4=melt(modelOutputParadox4,id.vars="time")
 ggplot(modelOutputParadox4,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
 
 
+#End
