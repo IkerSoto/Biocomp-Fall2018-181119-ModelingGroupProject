@@ -58,7 +58,7 @@ ggplot(modelSimOutput2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+the
 y1IS
 params2.1IS=c(1,0.02,0.1,0.2)
 times1IS
-modelSim2.1IS=ode(y=y1IS,times=times1,func=ddLotkaVolt,parms=params2.1IS)
+modelSim2.1IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params2.1IS)
 modelSimOutput2.1IS=data.frame(time=modelSim2.1IS[,1],Herbivore=modelSim2.1IS[,2],Predator=modelSim2.1IS[,3])
 modelSimOutput2.1IS=melt(modelSimOutput2.1IS,id.vars="time")
 ggplot(modelSimOutput2.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
@@ -126,13 +126,8 @@ times1IS
 modelSim4.1IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params4.1IS)
 modelSimOutput4.1IS=data.frame(time=modelSim4.1IS[,1],Herbivore=modelSim4.1IS[,2],Predator=modelSim4.1IS[,3])
 modelSimOutput4.1IS=melt(modelSimOutput4.1IS,id.vars="time")
-<<<<<<< HEAD
 ggplot(modelSimOutput4.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals") +
   ggtitle("Simulation when a is increased by a factor of 2")
-=======
-ggplot(modelSimOutput4.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
-+ggtitle("Simulation when a is increased by a factor of 2")
->>>>>>> b44065ce8a1af694a5f439bfbcc86a0c4e2b78d9
 
 #Simulation when "a" is increased by a factor of 4:b=0.5, a=0.08,e=0.1, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -205,8 +200,8 @@ times1IS
 modelSim6.2IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params6.2IS)
 modelSimOutput6.2IS=data.frame(time=modelSim6.2IS[,1],Herbivore=modelSim6.2IS[,2],Predator=modelSim6.2IS[,3])
 modelSimOutput6.2IS=melt(modelSimOutput6.2IS,id.vars="time")
-ggplot(modelSimOutput6.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
-+ggtitle("Simulation when e is increased by a factor of 4")
+ggplot(modelSimOutput6.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+  ggtitle("Simulation when e is increased by a factor of 4")
 
 
 ####Simulating a decrease in conversion efficiency of prey to predators (e)####
@@ -344,22 +339,22 @@ modelSim1=ode(y=NO,times=times,func=RMmodel,parms=params1)
 modelOutput1=data.frame(time=modelSim1[,1],N1=modelSim1[,2],N2=modelSim1[,3])
 #plot output of simulation
 ggplot(modelOutput1,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput1, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
-  scale_color_discrete(name = "Species", labels = c("Prey", "Predators"))
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators")) + ggtitle("Initial Conditions")
 
 ###Simulation 2- increase b 
 
-#Define parameters, intitial values for state variables, and time steps 
+#Define parameters, initial values for state variables, and time steps 
 params2=c(1.8,0.07,0.2,5,400,0.001)
 NO=c(500,120)
 times= 1:200
 
 # Simulate the model using ode()
-modelSim2=ode(y=NO,times=times,func=RMmodel,parms=params1)
+modelSim2=ode(y=NO,times=times,func=RMmodel,parms=params2)
 #model state variables in subsequent columns convert to a dataframe for plotting purposes
 modelOutput2=data.frame(time=modelSim2[,1],N1=modelSim2[,2],N2=modelSim2[,3])
 #plot output of simulation
 ggplot(modelOutput2,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput2, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
-  scale_color_discrete(name = "Species", labels = c("Prey", "Predators"))
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators")) +ggtitle("")
 
 
 ###Simulation 3- increase e 
@@ -531,7 +526,7 @@ timesParadox=1:200
 modelSimParadox=ode(y=NO, times=timesParadox,func=RMmodel,parms=ParamsParadox)
 modelOutputParadox=data.frame(time=modelSimParadox[,1],Herbivore=modelSimParadox[,2],Predator=modelSimParadox[,3])
 modelOutputParadox=melt(modelOutputParadox,id.vars="time")
-ggplot(modelOutputParadox,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()
+ggplot(modelOutputParadox,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
 
 #Simulation when "a" is 0.0009
 ParamsParadox2=c(0.8,0.07,0.2,5,400,0.0009)
