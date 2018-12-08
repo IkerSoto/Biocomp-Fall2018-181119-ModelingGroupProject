@@ -68,7 +68,7 @@ ggplot(modelSimOutput2.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+t
 y1IS
 params2.2IS=c(2,0.02,0.1,0.2)
 times1IS
-modelSim2.2IS=ode(y=y1IS,times=times1,func=ddLotkaVolt,parms=params2.2IS)
+modelSim2.2IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params2.2IS)
 modelSimOutput2.2IS=data.frame(time=modelSim2.2IS[,1],Herbivore=modelSim2.2IS[,2],Predator=modelSim2.2IS[,3])
 modelSimOutput2.2IS=melt(modelSimOutput2.2IS,id.vars="time")
 ggplot(modelSimOutput2.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
@@ -116,7 +116,7 @@ times1IS
 modelSim4IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params4IS)
 modelSimOutput4IS=data.frame(time=modelSim4IS[,1],Herbivore=modelSim4IS[,2],Predator=modelSim4IS[,3])
 modelSimOutput4IS=melt(modelSimOutput4IS,id.vars="time")
-ggplot(modelSimOutput4IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+ggplot(modelSimOutput4IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals") +
   ggtitle("Simulation when a is increased by a factor of 3")
 
 #Simulation when "a" is increased by a factor of 2:b=0.5, a=0.04,e=0.1, s=0.2, H0=25, P0=5 and a time step of 0.1
@@ -126,8 +126,8 @@ times1IS
 modelSim4.1IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params4.1IS)
 modelSimOutput4.1IS=data.frame(time=modelSim4.1IS[,1],Herbivore=modelSim4.1IS[,2],Predator=modelSim4.1IS[,3])
 modelSimOutput4.1IS=melt(modelSimOutput4.1IS,id.vars="time")
-ggplot(modelSimOutput4.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
-+ggtitle(Simulation when a is increased by a factor of 2)
+ggplot(modelSimOutput4.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals") +
+  ggtitle("Simulation when a is increased by a factor of 2")
 
 #Simulation when "a" is increased by a factor of 4:b=0.5, a=0.08,e=0.1, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -136,7 +136,7 @@ times1IS
 modelSim4.2IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params4.2IS)
 modelSimOutput4.2IS=data.frame(time=modelSim4.2IS[,1],Herbivore=modelSim4.2IS[,2],Predator=modelSim4.2IS[,3])
 modelSimOutput4.2IS=melt(modelSimOutput4.2IS,id.vars="time")
-ggplot(modelSimOutput4.2,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+ggplot(modelSimOutput4.2IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals") +
   ggtitle("Simulation when a is increased by a factor of 4")
 
 
@@ -148,7 +148,7 @@ times1IS
 modelSim5IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params5IS)
 modelSimOutput5IS=data.frame(time=modelSim5IS[,1],Herbivore=modelSim5IS[,2],Predator=modelSim5IS[,3])
 modelSimOutput5IS=melt(modelSimOutput5IS,id.vars="time")
-ggplot(modelSimOutput5IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
+ggplot(modelSimOutput5IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals") +
   ggtitle("Simulation when a is decreased by a factor of 3")
 
 #Simulation when "a" is decreased by a factor of 2:b=0.5, a=0.01,e=0.1, s=0.2, H0=25, P0=5 and a time step of 0.1
@@ -190,8 +190,8 @@ times1IS
 modelSim6.1IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params6.1IS)
 modelSimOutput6.1IS=data.frame(time=modelSim6.1IS[,1],Herbivore=modelSim6.1IS[,2],Predator=modelSim6.1IS[,3])
 modelSimOutput6.1IS=melt(modelSimOutput6.1IS,id.vars="time")
-ggplot(modelSimOutput6.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
-+ggtitle("Simulation when e is increased by a factor of 2")
+ggplot(modelSimOutput6.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals") + 
+  ggtitle("Simulation when e is increased by a factor of 2")
 
 #Simulation when "e" is increased by a factor of 4:b=0.5, a=0.02,e=0.4, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -219,7 +219,7 @@ ggplot(modelSimOutput7IS,aes(x=time,y=value))+geom_line(aes(color=variable))+the
 y1IS
 params7.1IS=c(0.5,0.02,0.05,0.2)
 times1IS
-modelSim7.1IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params7.1)
+modelSim7.1IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params7.1IS)
 modelSimOutput7.1IS=data.frame(time=modelSim7.1IS[,1],Herbivore=modelSim7.1IS[,2],Predator=modelSim7.1IS[,3])
 modelSimOutput7.1IS=melt(modelSimOutput7.1IS,id.vars="time")
 ggplot(modelSimOutput7.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")+
