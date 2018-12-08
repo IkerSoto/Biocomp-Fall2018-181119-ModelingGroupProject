@@ -126,8 +126,13 @@ times1IS
 modelSim4.1IS=ode(y=y1IS,times=times1IS,func=ddLotkaVolt,parms=params4.1IS)
 modelSimOutput4.1IS=data.frame(time=modelSim4.1IS[,1],Herbivore=modelSim4.1IS[,2],Predator=modelSim4.1IS[,3])
 modelSimOutput4.1IS=melt(modelSimOutput4.1IS,id.vars="time")
+<<<<<<< HEAD
 ggplot(modelSimOutput4.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals") +
   ggtitle("Simulation when a is increased by a factor of 2")
+=======
+ggplot(modelSimOutput4.1IS,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
++ggtitle("Simulation when a is increased by a factor of 2")
+>>>>>>> b44065ce8a1af694a5f439bfbcc86a0c4e2b78d9
 
 #Simulation when "a" is increased by a factor of 4:b=0.5, a=0.08,e=0.1, s=0.2, H0=25, P0=5 and a time step of 0.1
 y1IS
@@ -335,14 +340,13 @@ times= 1:200
 
 # Simulate the model using ode()
 modelSim1=ode(y=NO,times=times,func=RMmodel,parms=params1)
-
 #model state variables in subsequent columns convert to a dataframe for plotting purposes
 modelOutput1=data.frame(time=modelSim1[,1],N1=modelSim1[,2],N2=modelSim1[,3])
-
 #plot output of simulation
-ggplot(modelOutput1,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput1, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+ggplot(modelOutput1,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput1, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators"))
 
-###Model Simulation 2 with different parameters- Increase b 
+###Simulation 2- increase b 
 
 #Define parameters, intitial values for state variables, and time steps 
 params2=c(1.8,0.07,0.2,5,400,0.001)
@@ -354,7 +358,9 @@ modelSim2=ode(y=NO,times=times,func=RMmodel,parms=params1)
 #model state variables in subsequent columns convert to a dataframe for plotting purposes
 modelOutput2=data.frame(time=modelSim2[,1],N1=modelSim2[,2],N2=modelSim2[,3])
 #plot output of simulation
-ggplot(modelOutput2,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput2, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+ggplot(modelOutput2,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput2, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators"))
+
 
 ###Simulation 3- increase e 
 #Define parameters, intitial values for state variables, and time steps 
@@ -367,7 +373,9 @@ modelSim3=ode(y=NO,times=times,func=RMmodel,parms=params3)
 #model state variables in subsequent columns convert to a dataframe for plotting purposes
 modelOutput3=data.frame(time=modelSim3[,1],N1=modelSim3[,2],N2=modelSim3[,3])
 #plot output of simulation
-ggplot(modelOutput3,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput3, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+ggplot(modelOutput3,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput3, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators"))
+
 
 ###Simulation 4- decrease e 
 #Define parameters, intitial values for state variables, and time steps 
@@ -380,7 +388,9 @@ modelSim4=ode(y=NO,times=times,func=RMmodel,parms=params4)
 #model state variables in subsequent columns convert to a dataframe for plotting purposes
 modelOutput4=data.frame(time=modelSim4[,1],N1=modelSim4[,2],N2=modelSim4[,3])
 #plot output of simulation
-ggplot(modelOutput4,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput4, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+ggplot(modelOutput4,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput4, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators"))
+
 
 ###Simulation 5- increase s 
 params5=c(0.8,0.07,0.8,5,400,0.001)
@@ -392,7 +402,9 @@ modelSim5=ode(y=NO,times=times,func=RMmodel,parms=params5)
 #model state variables in subsequent columns convert to a dataframe for plotting purposes
 modelOutput5=data.frame(time=modelSim5[,1],N1=modelSim5[,2],N2=modelSim5[,3])
 #plot output of simulation
-ggplot(modelOutput5,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput5, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+ggplot(modelOutput5,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput5, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators"))
+
 
 ###Simulation 6- decrease s 
 params6=c(0.8,0.07,0.02,5,400,0.001)
@@ -404,7 +416,8 @@ modelSim6=ode(y=NO,times=times,func=RMmodel,parms=params6)
 #model state variables in subsequent columns convert to a dataframe for plotting purposes
 modelOutput6=data.frame(time=modelSim6[,1],N1=modelSim6[,2],N2=modelSim6[,3])
 #plot output of simulation
-ggplot(modelOutput6,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput6, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+ggplot(modelOutput6,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput6, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators"))
 
 ###Simulation 7- increase w 
 params7=c(0.8,0.07,0.2,15,400,0.001)
@@ -416,7 +429,9 @@ modelSim7=ode(y=NO,times=times,func=RMmodel,parms=params7)
 #model state variables in subsequent columns convert to a dataframe for plotting purposes
 modelOutput7=data.frame(time=modelSim7[,1],N1=modelSim7[,2],N2=modelSim7[,3])
 #plot output of simulation
-ggplot(modelOutput7,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput7, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+ggplot(modelOutput7,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput7, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators"))
+
 
 
 ###Simulation 8- decrease w 
@@ -429,7 +444,9 @@ modelSim8=ode(y=NO,times=times,func=RMmodel,parms=params8)
 #model state variables in subsequent columns convert to a dataframe for plotting purposes
 modelOutput8=data.frame(time=modelSim8[,1],N1=modelSim8[,2],N2=modelSim8[,3])
 #plot output of simulation
-ggplot(modelOutput8,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput8, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+ggplot(modelOutput8,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput8, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators"))
+
 
 ###Simulation 9- increase d
 params9=c(0.8,0.07,0.2,5,1200,0.001)
@@ -441,7 +458,9 @@ modelSim9=ode(y=NO,times=times,func=RMmodel,parms=params9)
 #model state variables in subsequent columns convert to a dataframe for plotting purposes
 modelOutput9=data.frame(time=modelSim9[,1],N1=modelSim9[,2],N2=modelSim9[,3])
 #plot output of simulation
-ggplot(modelOutput9,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput9, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+ggplot(modelOutput9,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput9, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators"))
+
 
 ###Simulation 10- decrease d
 params10=c(0.8,0.07,0.2,5,150,0.001)
@@ -453,7 +472,8 @@ modelSim10=ode(y=NO,times=times,func=RMmodel,parms=params10)
 #model state variables in subsequent columns convert to a dataframe for plotting purposes
 modelOutput10=data.frame(time=modelSim10[,1],N1=modelSim10[,2],N2=modelSim10[,3])
 #plot output of simulation
-ggplot(modelOutput10,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput10, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+ggplot(modelOutput10,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput10, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators"))
 
 ###Simulation 11- increase alpha (a)
 params11=c(0.8,0.07,0.2,5,400,0.004)
@@ -465,7 +485,9 @@ modelSim11=ode(y=NO,times=times,func=RMmodel,parms=params11)
 #model state variables in subsequent columns convert to a dataframe for plotting purposes
 modelOutput11=data.frame(time=modelSim11[,1],N1=modelSim11[,2],N2=modelSim11[,3])
 #plot output of simulation
-ggplot(modelOutput11,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput11, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+ggplot(modelOutput11,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput11, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators"))
+
 
 ###Simulation 12- decrease alpha (a)
 params12=c(0.8,0.07,0.2,5,400,0.0005)
@@ -477,39 +499,8 @@ modelSim12=ode(y=NO,times=times,func=RMmodel,parms=params12)
 #model state variables in subsequent columns convert to a dataframe for plotting purposes
 modelOutput12=data.frame(time=modelSim12[,1],N1=modelSim12[,2],N2=modelSim12[,3])
 #plot output of simulation
-ggplot(modelOutput12,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput12, mapping=aes(x=time,y=N2),col='red')+theme_classic()
-
-#Simulating the "Paradox of Enrichment for the Rosenzweig-MacArthur model by increasing the carrying capacity of the prey:
-
-#Simulation when "a" is 0.00125
-ParamsParadox=c(0.8,0.07,0.2,5,400,0.00125)
-NO=c(500,120)
-timesParadox=1:200
-modelSimParadox=ode(y=NO, times=timesParadox,func=RMmodel,parms=ParamsParadox)
-modelOutputParadox=data.frame(time=modelSimParadox[,1],Herbivore=modelSimParadox[,2],Predator=modelSimParadox[,3])
-modelOutputParadox=melt(modelOutputParadox,id.vars="time")
-ggplot(modelOutputParadox,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()
-
-#Simulation when "a" is 0.0009
-ParamsParadox2=c(0.8,0.07,0.2,5,400,0.0009)
-modelSimParadox2=ode(y=NO, times=timesParadox,func=RMmodel,parms=ParamsParadox2)
-modelOutputParadox2=data.frame(time=modelSimParadox2[,1],Herbivore=modelSimParadox2[,2],Predator=modelSimParadox2[,3])
-modelOutputParadox2=melt(modelOutputParadox2,id.vars="time")
-ggplot(modelOutputParadox2,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()
-
-#Simulation when "a" is 0.0006
-ParamsParadox3=c(0.8,0.07,0.2,5,400,0.0006)
-modelSimParadox3=ode(y=NO, times=timesParadox,func=RMmodel,parms=ParamsParadox3)
-modelOutputParadox3=data.frame(time=modelSimParadox3[,1],Herbivore=modelSimParadox3[,2],Predator=modelSimParadox3[,3])
-modelOutputParadox3=melt(modelOutputParadox3,id.vars="time")
-ggplot(modelOutputParadox3,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()
-
-#Simulation when "a" is 0.0005
-ParamsParadox4=c(0.8,0.07,0.2,5,400,0.0005)
-modelSimParadox4=ode(y=NO, times=timesParadox,func=RMmodel,parms=ParamsParadox4)
-modelOutputParadox4=data.frame(time=modelSimParadox4[,1],Herbivore=modelSimParadox4[,2],Predator=modelSimParadox4[,3])
-modelOutputParadox4=melt(modelOutputParadox4,id.vars="time")
-ggplot(modelOutputParadox4,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()
+ggplot(modelOutput12,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput12, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators"))
 
 
 ###Simulation 13- decrease b 
@@ -525,33 +516,42 @@ modelSim13=ode(y=NO,times=times,func=RMmodel,parms=params13)
 #model state variables in subsequent columns convert to a dataframe for plotting purposes
 modelOutput13=data.frame(time=modelSim13[,1],N1=modelSim13[,2],N2=modelSim13[,3])
 #plot output of simulation
-ggplot(modelOutput13,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput13, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+ggplot(modelOutput13,aes(x=time,y=N1,color='Predators'))+geom_line()+geom_line(data=modelOutput13, mapping=aes(x=time,y=N2,col='Prey'))+theme_classic() + ylab("Number of individuals") +
+  scale_color_discrete(name = "Species", labels = c("Prey", "Predators"))
 
-###Paradox of Enrichment 
 
-##alpha at 0.00125 
-#Define parameters, intitial values for state variables, and time steps 
-params14=c(0.8,0.07,0.2,5,400,0.00125)
+
+
+###Simulating the "Paradox of Enrichment for the Rosenzweig-MacArthur model by increasing the carrying capacity of the prey:
+
+#Simulation when "a" is 0.00125
+ParamsParadox=c(0.8,0.07,0.2,5,400,0.00125)
 NO=c(500,120)
-times= 1:200
-# Simulate the model using ode()
-modelSim14=ode(y=NO,times=times,func=RMmodel,parms=params14)
-#model state variables in subsequent columns convert to a dataframe for plotting purposes
-modelOutput14=data.frame(time=modelSim14[,1],N1=modelSim14[,2],N2=modelSim14[,3])
-#plot output of simulation
-ggplot(modelOutput14,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput14, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+timesParadox=1:200
+modelSimParadox=ode(y=NO, times=timesParadox,func=RMmodel,parms=ParamsParadox)
+modelOutputParadox=data.frame(time=modelSimParadox[,1],Herbivore=modelSimParadox[,2],Predator=modelSimParadox[,3])
+modelOutputParadox=melt(modelOutputParadox,id.vars="time")
+ggplot(modelOutputParadox,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()
 
-##alpha at 0.0005
-#Define parameters, intitial values for state variables, and time steps 
-params15=c(0.8,0.07,0.2,5,400,0.0005)
-NO=c(500,120)
-times= 1:200
-# Simulate the model using ode()
-modelSim15=ode(y=NO,times=times,func=RMmodel,parms=params15)
-#model state variables in subsequent columns convert to a dataframe for plotting purposes
-modelOutput15=data.frame(time=modelSim15[,1],N1=modelSim15[,2],N2=modelSim15[,3])
-#plot output of simulation
-ggplot(modelOutput15,aes(x=time,y=N1))+geom_line()+geom_line(data=modelOutput15, mapping=aes(x=time,y=N2),col='red')+theme_classic() 
+#Simulation when "a" is 0.0009
+ParamsParadox2=c(0.8,0.07,0.2,5,400,0.0009)
+modelSimParadox2=ode(y=NO, times=timesParadox,func=RMmodel,parms=ParamsParadox2)
+modelOutputParadox2=data.frame(time=modelSimParadox2[,1],Herbivore=modelSimParadox2[,2],Predator=modelSimParadox2[,3])
+modelOutputParadox2=melt(modelOutputParadox2,id.vars="time")
+ggplot(modelOutputParadox2,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
 
+#Simulation when "a" is 0.0006
+ParamsParadox3=c(0.8,0.07,0.2,5,400,0.0006)
+modelSimParadox3=ode(y=NO, times=timesParadox,func=RMmodel,parms=ParamsParadox3)
+modelOutputParadox3=data.frame(time=modelSimParadox3[,1],Herbivore=modelSimParadox3[,2],Predator=modelSimParadox3[,3])
+modelOutputParadox3=melt(modelOutputParadox3,id.vars="time")
+ggplot(modelOutputParadox3,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
+
+#Simulation when "a" is 0.0005
+ParamsParadox4=c(0.8,0.07,0.2,5,400,0.0005)
+modelSimParadox4=ode(y=NO, times=timesParadox,func=RMmodel,parms=ParamsParadox4)
+modelOutputParadox4=data.frame(time=modelSimParadox4[,1],Herbivore=modelSimParadox4[,2],Predator=modelSimParadox4[,3])
+modelOutputParadox4=melt(modelOutputParadox4,id.vars="time")
+ggplot(modelOutputParadox4,aes(x=time,y=value))+geom_line(aes(color=variable))+theme_classic()+ylab("Number of individuals")
 
 
